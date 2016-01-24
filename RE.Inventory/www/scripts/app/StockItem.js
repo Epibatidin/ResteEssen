@@ -1,0 +1,16 @@
+System.register([], function(exports_1) {
+    var StockItem;
+    return {
+        setters:[],
+        execute: function() {
+            StockItem = (function () {
+                function StockItem() {
+                }
+                return StockItem;
+            })();
+            exports_1("StockItem", StockItem);
+            ;
+        }
+    }
+});
+//# sourceMappingURL=StockItem.js.map

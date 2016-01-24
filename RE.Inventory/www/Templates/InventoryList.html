@@ -1,0 +1,16 @@
+<h1>My First {{title}} App</h1>
+
+<form>
+    <input type="text"
+           [(ngModel)]="search">
+    <p>
+        Du suchst gerade nach:
+        {{search}}
+    </p>
+</form>
+<ul class="unstyled">
+    <li *ngFor="#stock of RetrieveStockItems();">
+        <input type="checkbox" >
+        <span>{{stock.Name}}</span>
+    </li>
+</ul>
