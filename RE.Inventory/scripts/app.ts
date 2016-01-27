@@ -14,10 +14,10 @@ export function registerModules(): void {
     for (var dependency of loader.Dependencies()) {
         provider.push(new Provider(dependency.ServiceInterface, {useClass : dependency.ServiceImplementingType }));
     };
-    Injector.resolveAndCreate(provider)
+    Injector.resolveAndCreate(provider);
     
     bootstrap(component, provider).then((appRef) => {
-        enableDebugTools(appRef)
+        enableDebugTools(appRef);
     }); 
 
 

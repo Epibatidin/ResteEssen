@@ -1,4 +1,5 @@
 ﻿import {registerModules} from './app';
+import {DatabaseManager} from './DatabaseManager';
 
 /**
  * Called from start.ts after systemjs bootstap
@@ -20,5 +21,5 @@ function initializeCordova(): void {
 
 function onDeviceReady(): void {
     console.log('Cordova: on device ready');
-    registerModules();
+    new DatabaseManager().AssertDBsAreAvailable(["Inventory.db"], registerModules);
 }
