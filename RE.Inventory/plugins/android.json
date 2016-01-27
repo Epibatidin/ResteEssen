@@ -12,6 +12,9 @@
         },
         "cordova-sqlite-storage": {
             "PACKAGE_NAME": "io.cordova.myapp823ab3"
+        },
+        "me.rahul.plugins.sqlDB": {
+            "PACKAGE_NAME": "io.cordova.myapp823ab3"
         }
     },
     "dependent_plugins": {}

@@ -14,5 +14,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "me.rahul.plugins.sqlDB": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-dbcopy"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
