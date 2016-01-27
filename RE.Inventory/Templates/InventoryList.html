@@ -1,7 +1,10 @@
 ﻿
+<button (click)="executeQuery()">ExecuteTheQuery</button>
+
 
 <ul class="unstyled">
-    <li *ngFor="#stock of RetrieveStockItems();">
+    <li *ngFor="#stock of StockData;">
+        <span>{{stock.Id}}</span>
         <span>{{stock.Name}}</span>
     </li>
 </ul>

@@ -12,12 +12,26 @@ import {StockItem} from './StockItem';
 export class InventoryComponent {
     private _inventory: IInventoryService;
     public title = 'Inventar';
-    
-    constructor(@Inject(IInventoryService) inventory: IInventoryService) {
+
+    public StockData: StockItem[];
+
+    constructor( @Inject(IInventoryService) inventory: IInventoryService) {
+        this.StockData = new Array<StockItem>();
+
         this._inventory = inventory;
     }
 
+    executeQuery(): void {
+        for (var item of this._inventory.getAllItems()) {
+
+            this.StockData.push(item);
+        }
+
+
+    }
+
+
     RetrieveStockItems(): StockItem[] {
-        return this._inventory.getAllItems();
+        return null;
     }
 }

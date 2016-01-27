@@ -24,7 +24,6 @@
 /// <reference path="plugins/Splashscreen.d.ts"/>
 /// <reference path="plugins/StatusBar.d.ts"/>
 /// <reference path="plugins/Vibration.d.ts"/>
-/// <reference path="plugins/WebSQL.d.ts"/>
 
 /// <reference path="custom/DBCopy.d.ts"/>
 /// <reference path="custom/SQLitePlugin.d.ts"/>

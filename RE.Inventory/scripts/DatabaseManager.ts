@@ -5,20 +5,9 @@ export class DatabaseManager {
         this.assertAccessableDatabase(databases[0], succeedCallback);
     }
 
-    public OpenDatabase(databasename: string) : Database {
-
-        return sqlitePlugin.openDatabase({
-            name: databasename,
-            location: 2,
-            createFromLocation: 2
-            //,androidDatabaseImplementation: 2, androidLockWorkaround: 1
-        });
-    }
-
     private assertAccessableDatabase(databasename: string, succeedCallback : any) {
-        var self = this;
         function initDb() {
-            self.OpenDatabase(databasename).transaction(tx => {
+            new DatabaseHandle(databasename).OpenDatabase().transaction(tx => {
                 tx.executeSql("SELECT * FROM sqlite_master WHERE type='table'", [],
                     (tx, res) => {
                         if (res.rows.length > 0) {
@@ -38,6 +27,35 @@ export class DatabaseManager {
                 initDb();
             }
             return false;
+        });
+
+
+        //if (this.cleanCopy) {
+        //    console.log('trying to delete db');
+        //    window.plugins.sqlDB.remove("Inventory.db", 0, function () {
+        //        //open db and run your queries
+        //        //db = window.sqlitePlugin.openDatabase({ name: "demo.db" });
+        //        console.log('Delete succeed');
+        //    }, function copyerror(e) {
+        //        console.log("Delete Failed Error Code = " + JSON.stringify(e));
+        //    });
+        //}
+    }
+}
+
+export class DatabaseHandle {
+
+    constructor(private _dbName: string) {
+        
+    }
+
+    public OpenDatabase(): Database {
+
+        return sqlitePlugin.openDatabase({
+            name: this._dbName,
+            location: 2,
+            createFromLocation: 2
+            //,androidDatabaseImplementation: 2, androidLockWorkaround: 1
         });
     }
 }
