@@ -2,6 +2,7 @@
     baseURL: './scripts',
     defaultJSExtensions: true,
     transpiler: 'none',
+    globalEvaluationScope: false ,
     map: {
         stockItem: './scripts/app/StockItem.js',
         InventoryService : './scripts/app/InventoryService.js',

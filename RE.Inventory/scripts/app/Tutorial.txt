@@ -1,0 +1,55 @@
+﻿import {Http} from 'angular2/http';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
+import {Todo} from 'app/interfaces';
+
+export class TodosService {
+    todos$: Observable<Array<Todo>>;
+    private _todosObserver: any;
+    private _dataStore: {
+        todos: Array<Todo>
+    };
+
+    constructor(private _http: Http) {
+        this.todos$ = new Observable(observer =>
+            this._todosObserver = observer).share();
+
+        this._dataStore = { todos: [] };
+    }
+
+    loadTodos() {
+        this._http.get('/api/todos').map(response => response.json()).subscribe(data => {
+            this._dataStore.todos = data;
+            this._todosObserver.next(this._dataStore.todos);
+        }, error => console.log('Could not load todos.'));
+    }
+
+    createTodo(todo: Todo) {
+        this._http.post('/api/todos', todo)
+            .map(response => response.json()).subscribe(data => {
+                this._dataStore.todos.push(data);
+                this._todosObserver.next(this._dataStore.todos);
+            }, error => console.log('Could not create todo.'));
+    }
+
+    updateTodo(todo: Todo) {
+        this._http.put(`/api/todos/${todo.id}`, todo)
+            .map(response => response.json()).subscribe(data => {
+                this._dataStore.todos.forEach((todo, i) => {
+                    if (todo.id === data.id) { this._dataStore.todos[i] = data; }
+                });
+
+                this._todosObserver.next(this._dataStore.todos);
+            }, error => console.log('Could not update todo.'));
+    }
+
+    deleteTodo(todo: Todo) {
+        this._http.delete(`/api/todos/${todo.id}`).subscribe(response => {
+            this._dataStore.todos.forEach((t, index) => {
+                if (t.id === todo.id) { this._dataStore.todos.splice(index, 1); }
+            });
+
+            this._todosObserver.next(this._dataStore.todos);
+        }, error => console.log('Could not delete todo.'));
+    }
+}

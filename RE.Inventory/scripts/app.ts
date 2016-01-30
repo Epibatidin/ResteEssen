@@ -3,9 +3,7 @@ import {Injector, Provider, OpaqueToken} from 'angular2/core';
 import {InventoryComponentLoader} from './app/InventoryComponentLoader';
 
 export function registerModules(): void {
-
-    var components = new Array<any>();
-
+    
     var loader = new InventoryComponentLoader();
     var component = loader.Component();
 

@@ -15,7 +15,7 @@ export class InventoryComponentLoader {
 
     Dependencies(): DependencyConfiguration[] {
 
-        var dependencies = new Array<DependencyConfiguration>()
+        var dependencies = new Array<DependencyConfiguration>();
 
         var inventoryService = new DependencyConfiguration();
         inventoryService.ServiceInterface = IInventoryService;

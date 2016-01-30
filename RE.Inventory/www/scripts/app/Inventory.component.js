@@ -24,16 +24,32 @@ System.register(['angular2/core', './InventoryService'], function(exports_1) {
         execute: function() {
             InventoryComponent = (function () {
                 function InventoryComponent(inventory) {
-                    this.title = 'Inventar';
+                    this.componentStock = new Array();
                     this._inventory = inventory;
                 }
-                InventoryComponent.prototype.RetrieveStockItems = function () {
-                    return this._inventory.getAllItems();
+                InventoryComponent.prototype.enableEmit = function () {
+                    this.emit = true;
+                };
+                InventoryComponent.prototype.disableEmit = function () {
+                    this.emit = false;
+                };
+                ;
+                InventoryComponent.prototype.ngOnInit = function () {
+                    console.log('InventoryComponent OnInit');
+                    var self = this;
+                    this._inventory.loadStockItems().subscribe(function (r) {
+                        self.componentStock.push(r);
+                    });
+                };
+                ;
+                InventoryComponent.prototype.push = function (item) {
+                    this.componentStock.push(item);
                 };
                 InventoryComponent = __decorate([
                     core_1.Component({
                         selector: 'inventory-app',
-                        templateUrl: 'Templates/InventoryList.html'
+                        templateUrl: 'Templates/InventoryList.html',
+                        changeDetection: core_1.ChangeDetectionStrategy.OnPush
                     }),
                     __param(0, core_1.Inject(InventoryService_1.IInventoryService)), 
                     __metadata('design:paramtypes', [InventoryService_1.IInventoryService])

@@ -1,5 +1,5 @@
-System.register(['./app'], function(exports_1) {
-    var app_1;
+System.register(['./app', './DatabaseManager'], function(exports_1) {
+    var app_1, DatabaseManager_1;
     function initialize() {
         initializeCordova();
     }
@@ -14,12 +14,15 @@ System.register(['./app'], function(exports_1) {
     }
     function onDeviceReady() {
         console.log('Cordova: on device ready');
-        app_1.registerModules();
+        new DatabaseManager_1.DatabaseManager().AssertDBsAreAvailable(["Inventory.db"], app_1.registerModules);
     }
     return {
         setters:[
             function (app_1_1) {
                 app_1 = app_1_1;
+            },
+            function (DatabaseManager_1_1) {
+                DatabaseManager_1 = DatabaseManager_1_1;
             }],
         execute: function() {
         }

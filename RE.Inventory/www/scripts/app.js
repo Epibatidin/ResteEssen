@@ -1,7 +1,6 @@
 System.register(['angular2/platform/browser', 'angular2/core', './app/InventoryComponentLoader'], function(exports_1) {
     var browser_1, core_1, InventoryComponentLoader_1;
     function registerModules() {
-        var components = new Array();
         var loader = new InventoryComponentLoader_1.InventoryComponentLoader();
         var component = loader.Component();
         var provider = new Array();

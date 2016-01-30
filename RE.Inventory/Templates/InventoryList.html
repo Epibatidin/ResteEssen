@@ -1,10 +1,21 @@
 ﻿
-<button (click)="executeQuery()">ExecuteTheQuery</button>
+<button (click)="enableEmit()">Emit Data</button>
+<button (click)="disableEmit()">Stop Emit Data</button>
 
-
+<p>Normal Array</p>
 <ul class="unstyled">
-    <li *ngFor="#stock of StockData;">
-        <span>{{stock.Id}}</span>
-        <span>{{stock.Name}}</span>
+    <li *ngFor="#stock of componentStock">
+        <span>{{ stock.Id }}</span>
+        <span>{{ stock.Name }}</span>
     </li>
 </ul>
+
+
+
+<!--<p>Observable</p>
+<ul class="unstyled">
+    <li *ngFor="#stock of observable">
+        <span>{{ stock.Id }}</span>
+        <span>{{ stock.Name }}</span>
+    </li>
+</ul>-->
