@@ -1,6 +1,4 @@
-﻿/// <reference path="typings/tsd.d.ts" />
-
-// Embedded in index.html
+﻿// Embedded in index.html
 
 /**
  * 
