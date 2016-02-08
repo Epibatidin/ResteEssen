@@ -1,7 +1,8 @@
 ﻿export class StockItem {
-    Id : number;
+    Id: number;
+    Quantity: number;
     Name: string;
-    Selected: boolean;
+    Color:string;
     Age: Date;
 
     public static create(): StockItem {
@@ -10,5 +11,4 @@
         stockItem.Id = 77;
         return stockItem;
     } 
-
 };

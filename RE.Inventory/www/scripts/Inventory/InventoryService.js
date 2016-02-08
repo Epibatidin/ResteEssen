@@ -1,4 +1,4 @@
-System.register(["./StockItem", "../DB/DatabaseHandle", 'rxjs/Observable', 'rxjs/add/operator/map'], function(exports_1) {
+System.register(["./StockItem", "../DB/DatabaseHandle", "rxjs/Observable", 'rxjs/add/operator/map'], function(exports_1) {
     var __extends = (this && this.__extends) || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
@@ -64,21 +64,6 @@ System.register(["./StockItem", "../DB/DatabaseHandle", 'rxjs/Observable', 'rxjs
                         "JOIN Article_TB Article on Article.Article_PK = inv.Article_FK " +
                         "JOIN Article_Type_TB ArticleType on Article.ArticleType_FK = ArticleType.ArticleTypeId_PK;";
                     return query;
-                };
-                InventoryService.prototype.getType = function (count) {
-                    var typeAsInt = count % 5;
-                    switch (typeAsInt) {
-                        case 0:
-                            return "yellow";
-                        case 1:
-                            return "blue";
-                        case 2:
-                            return "green";
-                        case 3:
-                            return "red";
-                        default:
-                            return "grey";
-                    }
                 };
                 return InventoryService;
             })(IInventoryService);

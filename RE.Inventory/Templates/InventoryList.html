@@ -2,20 +2,21 @@
 <button (click)="enableEmit()">Emit Data</button>
 <button (click)="disableEmit()">Stop Emit Data</button>
 
-<p>Normal Array</p>
-<ul class="unstyled">
-    <li *ngFor="#stock of componentStock">
-        <span>{{ stock.Id }}</span>
-        <span>{{ stock.Name }}</span>
-    </li>
-</ul>
+<div class="InventoryGrid">
+    <div class="actionContainer">
+        <button class="icon add" type="submit"></button>
+
+        <div style="float: left">
+
+            <input type="text" value="I Search Something "/>
 
 
+        </div>
+        <div class="clearfix"></div>
+    </div>
 
-<!--<p>Observable</p>
-<ul class="unstyled">
-    <li *ngFor="#stock of observable">
-        <span>{{ stock.Id }}</span>
-        <span>{{ stock.Name }}</span>
-    </li>
-</ul>-->
+    <span *ngFor="#stockItem of componentStock">{{stockItem.Name}}</span>
+
+    <stockItem *ngFor="#stockItem of componentStock"></stockItem>
+   
+</div>

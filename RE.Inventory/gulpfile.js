@@ -25,7 +25,9 @@ var files =
     './node_modules/angular2/bundles/angular2.dev.js',
     './node_modules/angular2/bundles/angular2-polyfills.min.js',
     './node_modules/systemjs/dist/system.src.js',
+    './node_modules/systemjs/dist/system-polyfills.src.js',
     './node_modules/es6-shim/es6-shim.js',
+    './node_modules/less/dist/less.min.js',
 ];
 
 var destinationFolderJS = './www/scripts/Framework';

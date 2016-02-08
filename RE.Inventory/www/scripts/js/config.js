@@ -2,9 +2,10 @@
     baseURL: './scripts',
     defaultJSExtensions: true,
     transpiler: 'none',
-    globalEvaluationScope: false ,
+    globalEvaluationScope: false,
     map: {
         stockItem: './scripts/app/StockItem.js',
-        InventoryService : './scripts/app/InventoryService.js',
+        InventoryService: './scripts/app/InventoryService.js',
+        Index: './scripts/index.js'
     }
 });

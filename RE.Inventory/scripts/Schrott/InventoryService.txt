@@ -1,0 +1,87 @@
+﻿
+
+//    result.Add(new StockItem() { Name = "Apfel", Type = "Yellow" });
+//result.Add(new StockItem() { Name = "Lachs", Type = "Blue" });
+//result.Add(new StockItem() { Name = "Gurke", Type = "Green" });
+//result.Add(new StockItem() { Name = "Hackfleisch", Type = "Red" });
+//result.Add(new StockItem() { Name = "Verfallen", Type = "Grey" });
+//result.Add(new StockItem() { Name = "SomeReallyLongTextWhichShouldShowMeHowtheLayoutBreaks", Type = "Red" });
+
+    //loadStockItems(): Observable<StockItem> {
+
+    //    var self = this;
+
+    //    var dbQuery = Observable.create(function (observer) {
+    //        self._dbHandler.OpenDatabase().transaction(tr => {
+    //            tr.executeSql(self.selectAllQuery(), [], (tx, res) => {
+    //                for (var i = 0; i < res.rows.length; i++) {
+    //                    var row = res.rows.item(i);
+    //                    console.log("DB RowResult Obsr " + i + " => " + JSON.stringify(row));
+    //                    observer.next(self.MapRowToStockItem(row, j * 8 + i));
+    //                }
+    //            },
+    //                function errorHandler(err) {
+    //                    console.log("error in db call " + err);
+    //                    observer.onError(err);
+    //                });
+    //        });
+    //    });
+    //}
+
+
+    private getType(count: number): string {
+        var typeAsInt = count % 5;
+        switch (typeAsInt) {
+        case 0:
+            return "yellow";
+        case 1:
+            return "blue";
+        case 2:
+            return "green";
+        case 3:
+            return "red";
+        default:
+            return "grey";
+        }
+    }
+
+    //private MapRowToStockItem(row : Object, pos : number): StockItem {
+    //    var item = new StockItem();
+    //    item.Id = pos + row['Id'];
+    //    item.Name = row['Name'];
+    //    item.Type = this.getType(pos);
+
+    //    return item;
+    //}
+
+    //getAllItems(): StockItem[] {
+    //    var stockItems = new Array<StockItem>();
+        
+        
+
+    //    this._dbHandler.OpenDatabase().transaction(tr => {
+    //        tr.executeSql("select id,name from Inventory_Table;", [], (tx, res) => {
+    //            for (var i = 0; i < res.rows.length; i++) {
+    //                var item = new StockItem();
+    //                var row = res.rows.item(i);
+    //                item.Id = row['id'];
+    //                item.Name = row['name'];
+
+    //                console.log("DB RowResult " + i + " => " + JSON.stringify(row));
+
+    //                stockItems.push(item);
+    //            };
+    //        }, (tx, error) => {
+    //            console.log('Error in Sql' + error.message);
+    //            return false;
+    //        });
+    //    });
+
+    //    var dummy = new StockItem();
+    //    dummy.Id = 77;
+    //    dummy.Name = "Super Mega Dummy";
+
+    //    stockItems.push(dummy);
+
+    //    return stockItems;
+    //}

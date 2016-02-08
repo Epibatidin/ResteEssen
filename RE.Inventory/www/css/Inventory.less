@@ -1,0 +1,78 @@
+﻿@fullWindowSize: 595;
+@itemsPerRow: 4;
+@resolution: 1;
+@marginBetweenItems: 2;
+@innerTilePadding:10;
+
+@tileFullSize: floor((@fullWindowSize - (@itemsPerRow *@resolution )- 1)/(@itemsPerRow *@resolution) ) * @resolution;
+@tileContentSize: @tileFullSize - ((@marginBetweenItems +  @innerTilePadding) * 2);
+@innerContainerPadding: (@fullWindowSize - (@tileFullSize * @itemsPerRow)) / 2;
+
+body {
+    margin:0px;
+}
+.dummy{
+    height:unit(@tileFullSize,px);
+   width: unit(@innerContainerPadding, px);
+}
+
+#Container {
+    width: unit(@fullWindowSize, px);
+    height: unit(@tileFullSize * 10, px);    
+    border: solid red;    
+    border-width: 10px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.InventoryGrid {
+    width: unit(@fullWindowSize - @innerContainerPadding *2, px);
+    height: 1500px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-color: burlywood;
+
+    padding: unit(@innerContainerPadding, px);
+}
+ 
+.StockItem {
+    width: unit(@tileContentSize, px);
+    height: unit(@tileContentSize, px);
+    padding:unit(@innerTilePadding, px);
+    margin: unit(@marginBetweenItems, px);
+    background: white;
+    float: left;
+    
+    .Name {
+        font-size:x-large;
+    }
+}
+
+.actionContainer 
+{
+    height:30px;
+
+    padding-bottom:15px;
+}
+
+.clearfix
+{
+    clear:both;   
+}
+
+.icon {
+    border:none;  
+    float:right;  
+    width:32px;
+    height:32px;
+    background-size: 32px 32px;
+    background-color:transparent;
+}
+
+.trash {
+    background-image:url("icon/trash.svg");    
+}
+
+.add {
+    background-image:url("icon/add.svg");    
+}

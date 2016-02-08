@@ -1,5 +1,5 @@
-﻿import {registerModules} from './app';
-import {DatabaseManager} from './DatabaseManager';
+﻿import {registerModules} from './bootstrap';
+import {DatabaseManager} from './DB/DatabaseManager';
 
 /**
  * Called from start.ts after systemjs bootstap

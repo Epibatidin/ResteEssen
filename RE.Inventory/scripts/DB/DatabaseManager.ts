@@ -1,11 +1,14 @@
-﻿
+﻿import {DatabaseHandle} from "./DatabaseHandle"
+
+
 export class DatabaseManager {
     
     public AssertDBsAreAvailable(databases: string[], succeedCallback: any) : void {
         this.assertAccessableDatabase(databases[0], succeedCallback);
     }
 
-    private assertAccessableDatabase(databasename: string, succeedCallback : any) {
+    private assertAccessableDatabase(databasename: string, succeedCallback: any) {
+        
         function initDb() {
             new DatabaseHandle(databasename).OpenDatabase().transaction(tx => {
                 tx.executeSql("SELECT * FROM sqlite_master WHERE type='table'", [],
@@ -19,8 +22,10 @@ export class DatabaseManager {
                     () => console.log('DB availability test failed')
                 );
             });
-        }
+        };
 
+        initDb();
+        return;
         window.plugins.sqlDB.copy(databasename, 0, () => initDb(), e => {
             console.log("Error Code = " + JSON.stringify(e));
             if (e.code === 516) {
@@ -40,22 +45,5 @@ export class DatabaseManager {
         //        console.log("Delete Failed Error Code = " + JSON.stringify(e));
         //    });
         //}
-    }
-}
-
-export class DatabaseHandle {
-
-    constructor(private _dbName: string) {
-        
-    }
-
-    public OpenDatabase(): Database {
-
-        return sqlitePlugin.openDatabase({
-            name: this._dbName,
-            location: 2,
-            createFromLocation: 2
-            //,androidDatabaseImplementation: 2, androidLockWorkaround: 1
-        });
     }
 }

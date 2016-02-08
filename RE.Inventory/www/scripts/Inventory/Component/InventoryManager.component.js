@@ -1,4 +1,4 @@
-System.register(['angular2/core', './InventoryService', './StockItem'], function(exports_1) {
+System.register(["angular2/core", "../InventoryService", "../StockItem"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12,7 +12,7 @@ System.register(['angular2/core', './InventoryService', './StockItem'], function
         return function (target, key) { decorator(target, key, paramIndex); }
     };
     var core_1, InventoryService_1, StockItem_1;
-    var InventoryComponent;
+    var InventoryManagerComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -25,19 +25,19 @@ System.register(['angular2/core', './InventoryService', './StockItem'], function
                 StockItem_1 = StockItem_1_1;
             }],
         execute: function() {
-            InventoryComponent = (function () {
-                function InventoryComponent(inventory) {
+            InventoryManagerComponent = (function () {
+                function InventoryManagerComponent(inventory) {
                     this.componentStock = new Array();
                     this._inventory = inventory;
                 }
-                InventoryComponent.prototype.enableEmit = function () {
+                InventoryManagerComponent.prototype.enableEmit = function () {
                     this.emit = true;
                 };
-                InventoryComponent.prototype.disableEmit = function () {
+                InventoryManagerComponent.prototype.disableEmit = function () {
                     this.emit = false;
                 };
                 ;
-                InventoryComponent.prototype.deleteItem = function (item) {
+                InventoryManagerComponent.prototype.deleteItem = function (item) {
                     for (var i = 0; i < this.componentStock.length; i++) {
                         if (this.componentStock[i].Id === item.Id) {
                             this.componentStock.splice(i, 1);
@@ -45,7 +45,7 @@ System.register(['angular2/core', './InventoryService', './StockItem'], function
                         }
                     }
                 };
-                InventoryComponent.prototype.ngOnInit = function () {
+                InventoryManagerComponent.prototype.ngOnInit = function () {
                     console.log('InventoryComponent OnInit');
                     var self = this;
                     self.componentStock.push(new StockItem_1.StockItem());
@@ -55,18 +55,18 @@ System.register(['angular2/core', './InventoryService', './StockItem'], function
                     self.componentStock.splice(0, 1);
                 };
                 ;
-                InventoryComponent = __decorate([
+                InventoryManagerComponent = __decorate([
                     core_1.Component({
                         selector: 'inventory-app',
                         templateUrl: 'Templates/InventoryList.html',
                     }),
                     __param(0, core_1.Inject(InventoryService_1.IInventoryService)), 
                     __metadata('design:paramtypes', [InventoryService_1.IInventoryService])
-                ], InventoryComponent);
-                return InventoryComponent;
+                ], InventoryManagerComponent);
+                return InventoryManagerComponent;
             })();
-            exports_1("InventoryComponent", InventoryComponent);
+            exports_1("InventoryManagerComponent", InventoryManagerComponent);
         }
     }
 });
-//# sourceMappingURL=Inventory.component.js.map
+//# sourceMappingURL=InventoryManager.component.js.map

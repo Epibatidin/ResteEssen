@@ -1,5 +1,5 @@
-﻿import {IInventoryService, InventoryService} from './InventoryService';
-import {InventoryComponent} from './Inventory.component'
+﻿import {IInventoryService,InventoryService} from './InventoryService';
+import {InventoryManagerComponent} from './Component/InventoryManager.component'
 import {StockItem} from './StockItem';
 
 export class DependencyConfiguration {
@@ -10,7 +10,7 @@ export class DependencyConfiguration {
 export class InventoryComponentLoader {
     
     Component(): any {
-        return InventoryComponent;
+        return InventoryManagerComponent;
     } 
 
     Dependencies(): DependencyConfiguration[] {

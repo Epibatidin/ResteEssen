@@ -1,6 +1,6 @@
 ﻿import {bootstrap, enableDebugTools} from 'angular2/platform/browser';
 import {Injector, Provider, OpaqueToken} from 'angular2/core';
-import {InventoryComponentLoader} from './app/InventoryComponentLoader';
+import {InventoryComponentLoader} from './Inventory/InventoryComponentLoader';
 
 export function registerModules(): void {
     
@@ -17,20 +17,4 @@ export function registerModules(): void {
     bootstrap(component, provider).then((appRef) => {
         enableDebugTools(appRef);
     }); 
-
-
-    //var injector = Injector.resolveAndCreate([
-    //    provide(InventoryService, { useClass: InventoryService })
-
-    //]);
-
-
-    ////components.push(AppComponent);
-    //components.push(InventoryComponent);
-
-    //for (var component of components) {
-    //    bootstrap(component //, //[InventoryService]
-    //    )});
-    //}
-    
 }

@@ -1,7 +1,11 @@
-System.register([], function(exports_1) {
-    var DatabaseManager, DatabaseHandle;
+System.register(["./DatabaseHandle"], function(exports_1) {
+    var DatabaseHandle_1;
+    var DatabaseManager;
     return {
-        setters:[],
+        setters:[
+            function (DatabaseHandle_1_1) {
+                DatabaseHandle_1 = DatabaseHandle_1_1;
+            }],
         execute: function() {
             DatabaseManager = (function () {
                 function DatabaseManager() {
@@ -10,10 +14,8 @@ System.register([], function(exports_1) {
                     this.assertAccessableDatabase(databases[0], succeedCallback);
                 };
                 DatabaseManager.prototype.assertAccessableDatabase = function (databasename, succeedCallback) {
-                    succeedCallback();
-                    return;
                     function initDb() {
-                        new DatabaseHandle(databasename).OpenDatabase().transaction(function (tx) {
+                        new DatabaseHandle_1.DatabaseHandle(databasename).OpenDatabase().transaction(function (tx) {
                             tx.executeSql("SELECT * FROM sqlite_master WHERE type='table'", [], function (tx, res) {
                                 if (res.rows.length > 0) {
                                     console.log('DB availability test succeed for : ');
@@ -24,6 +26,9 @@ System.register([], function(exports_1) {
                             }, function () { return console.log('DB availability test failed'); });
                         });
                     }
+                    ;
+                    initDb();
+                    return;
                     window.plugins.sqlDB.copy(databasename, 0, function () { return initDb(); }, function (e) {
                         console.log("Error Code = " + JSON.stringify(e));
                         if (e.code === 516) {
@@ -35,30 +40,6 @@ System.register([], function(exports_1) {
                 return DatabaseManager;
             })();
             exports_1("DatabaseManager", DatabaseManager);
-            DatabaseHandle = (function () {
-                function DatabaseHandle(_dbName) {
-                    this._dbName = _dbName;
-                }
-                DatabaseHandle.prototype.OpenDatabase = function () {
-                    var dbCurrent_path = "/sdcard/ResteEssen/";
-                    var connection = sqlitePlugin.openDatabase({
-                        name: dbCurrent_path + this._dbName,
-                        location: 2,
-                        createFromLocation: 2
-                    });
-                    return connection;
-                };
-                DatabaseHandle.prototype.OpenDatabase_Old = function () {
-                    var connection = sqlitePlugin.openDatabase({
-                        name: this._dbName,
-                        location: 2,
-                        createFromLocation: 2
-                    });
-                    return connection;
-                };
-                return DatabaseHandle;
-            })();
-            exports_1("DatabaseHandle", DatabaseHandle);
         }
     }
 });
