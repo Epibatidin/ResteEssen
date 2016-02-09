@@ -1,18 +1,21 @@
 ﻿import {Directive, ElementRef, Renderer, Input} from 'angular2/core';
 
 @Directive({
-    //selector: '[SelectiveBackground]',
-    selector: 'span',
-    inputs: ['SelectiveBackground']
+    selector: '[epi-background-color]'
 })
 export class BackgroundDirective {
-    @Input() SelectiveBackground: string;
+    @Input("epi-background-color") color: string;
+    @Input("epi-background-image") image: string;
+
+    constructor(private _el: ElementRef, private _renderer: Renderer) { }
     
-    constructor(el: ElementRef, renderer: Renderer) {
+    ngOnInit() {
 
-        //console.log('Selective' + this.color);
+        if (this.color) {
+            this._renderer.setElementStyle(this._el.nativeElement, "background-color", "#" + this.color);
+        }
 
-        el.nativeElement.style.color = this.SelectiveBackground;
-        //renderer.setElementStyle(el.nativeElement, 'color', 'red');
+        //console.log("Color :" + this.color);
+        //console.log("image :" + this.image);
     }
 }

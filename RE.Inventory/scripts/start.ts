@@ -14,10 +14,8 @@ Promise.all([
     // Position of system.import('index') is important. The returned module array is used the bootstrapApp function above.
     System.import('stockItem'),
     System.import('InventoryService'),
-   
+    System.import('DummyInventoryService'),
     System.import('index')
-
-
 ])
 .catch((error: Object) => console.error('Error: index loading with System:', error.toString()))
 .then(bootstrapApp)

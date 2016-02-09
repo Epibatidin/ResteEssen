@@ -1,5 +1,6 @@
-<div class="StockItem">
-    Color : {{stock.Color}}
-    <span class="Name"> {{stock.Name }}</span>
-    <button class="trash icon" (click)="deleteItem(stock)"></button>
+<div class="StockItem" 
+     [epi-background-color]="stockItem.Color" [epi-background-image]="stockItem.Name">
+    Color : {{stockItem.Color}}
+    <span class="Name"> {{stockItem.Name}}</span>
+    <button class="trash icon" (click)="deleteItem(stockItem)"></button>
 </div>

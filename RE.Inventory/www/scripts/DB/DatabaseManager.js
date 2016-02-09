@@ -1,10 +1,13 @@
-System.register(["./DatabaseHandle"], function(exports_1) {
-    var DatabaseHandle_1;
+System.register(["./DatabaseHandle", "../Interfaces/Toggles"], function(exports_1) {
+    var DatabaseHandle_1, Toggles_1;
     var DatabaseManager;
     return {
         setters:[
             function (DatabaseHandle_1_1) {
                 DatabaseHandle_1 = DatabaseHandle_1_1;
+            },
+            function (Toggles_1_1) {
+                Toggles_1 = Toggles_1_1;
             }],
         execute: function() {
             DatabaseManager = (function () {
@@ -14,6 +17,10 @@ System.register(["./DatabaseHandle"], function(exports_1) {
                     this.assertAccessableDatabase(databases[0], succeedCallback);
                 };
                 DatabaseManager.prototype.assertAccessableDatabase = function (databasename, succeedCallback) {
+                    if (Toggles_1.Toggles.IsRipple()) {
+                        succeedCallback();
+                        return;
+                    }
                     function initDb() {
                         new DatabaseHandle_1.DatabaseHandle(databasename).OpenDatabase().transaction(function (tx) {
                             tx.executeSql("SELECT * FROM sqlite_master WHERE type='table'", [], function (tx, res) {

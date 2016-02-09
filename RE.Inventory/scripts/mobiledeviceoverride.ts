@@ -2,8 +2,6 @@
 /** 
  * es6-shim is necessary for all browsers.  This was a problem with previous versions on Angular2.
  */
-//if (isMobile != null) {
-console.log('add es6shim');
 var scriptElem = document.createElement('script');
 scriptElem.setAttribute('src', 'scripts/Framework/es6-shim/es6-shim.js');
 if (document.body) {
@@ -11,4 +9,3 @@ if (document.body) {
 } else {
     document.head.appendChild(scriptElem);
 }
-//}

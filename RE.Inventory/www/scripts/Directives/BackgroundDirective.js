@@ -17,17 +17,26 @@ System.register(['angular2/core'], function(exports_1) {
             }],
         execute: function() {
             BackgroundDirective = (function () {
-                function BackgroundDirective(el, renderer) {
-                    el.nativeElement.style.color = this.SelectiveBackground;
+                function BackgroundDirective(_el, _renderer) {
+                    this._el = _el;
+                    this._renderer = _renderer;
                 }
+                BackgroundDirective.prototype.ngOnInit = function () {
+                    if (this.color) {
+                        this._renderer.setElementStyle(this._el.nativeElement, "background-color", "#" + this.color);
+                    }
+                };
                 __decorate([
-                    core_1.Input(), 
+                    core_1.Input("epi-background-color"), 
                     __metadata('design:type', String)
-                ], BackgroundDirective.prototype, "SelectiveBackground", void 0);
+                ], BackgroundDirective.prototype, "color", void 0);
+                __decorate([
+                    core_1.Input("epi-background-image"), 
+                    __metadata('design:type', String)
+                ], BackgroundDirective.prototype, "image", void 0);
                 BackgroundDirective = __decorate([
                     core_1.Directive({
-                        selector: 'span',
-                        inputs: ['SelectiveBackground']
+                        selector: '[epi-background-color]'
                     }), 
                     __metadata('design:paramtypes', [core_1.ElementRef, core_1.Renderer])
                 ], BackgroundDirective);

@@ -1,15 +1,16 @@
-﻿import {Component, Inject, ChangeDetectionStrategy  } from "angular2/core";
+﻿import {Component, View, Inject} from 'angular2/core';
 import {IInventoryService} from "../InventoryService";
 import {StockItem} from "../StockItem";
 import {Observable} from "rxjs/Observable";
 //import {BackgroundDirective} from '../Directives/BackgroundDirective'
 
+import {StockItemComponent} from "./StockItem.component"
 
 @Component({
     selector: 'inventory-app',
     templateUrl: 'Templates/InventoryList.html',
     
-    //directives: [BackgroundDirective],
+    directives: [StockItemComponent],
 })
 
 export class InventoryManagerComponent {
@@ -43,14 +44,11 @@ export class InventoryManagerComponent {
     }
 
     ngOnInit() {
-        console.log('InventoryComponent OnInit');
 
         var self = this;
-        self.componentStock.push(new StockItem());
         this._inventory.loadStockItems().subscribe(r => {
             self.componentStock.push(r as StockItem);
         });
-        self.componentStock.splice(0, 1);
 
     };
 }

@@ -4,8 +4,9 @@
     transpiler: 'none',
     globalEvaluationScope: false,
     map: {
-        stockItem: './scripts/app/StockItem.js',
-        InventoryService: './scripts/app/InventoryService.js',
+        stockItem: './scripts/Inventory/StockItem.js',
+        InventoryService: './scripts/Inventory/InventoryService.js',
+        DummyInventoryService: './scripts/Inventory/DummyInventoryService.js',
         Index: './scripts/index.js'
     }
 });

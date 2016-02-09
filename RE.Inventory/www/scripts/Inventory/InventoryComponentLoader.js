@@ -1,13 +1,19 @@
-System.register(['./InventoryService', './Component/InventoryManager.component'], function(exports_1) {
-    var InventoryService_1, InventoryManager_component_1;
+System.register(['./InventoryService', './DummyInventoryService', './Component/InventoryManager.component', "../Interfaces/Toggles"], function(exports_1) {
+    var InventoryService_1, DummyInventoryService_1, InventoryManager_component_1, Toggles_1;
     var DependencyConfiguration, InventoryComponentLoader;
     return {
         setters:[
             function (InventoryService_1_1) {
                 InventoryService_1 = InventoryService_1_1;
             },
+            function (DummyInventoryService_1_1) {
+                DummyInventoryService_1 = DummyInventoryService_1_1;
+            },
             function (InventoryManager_component_1_1) {
                 InventoryManager_component_1 = InventoryManager_component_1_1;
+            },
+            function (Toggles_1_1) {
+                Toggles_1 = Toggles_1_1;
             }],
         execute: function() {
             DependencyConfiguration = (function () {
@@ -26,7 +32,10 @@ System.register(['./InventoryService', './Component/InventoryManager.component']
                     var dependencies = new Array();
                     var inventoryService = new DependencyConfiguration();
                     inventoryService.ServiceInterface = InventoryService_1.IInventoryService;
-                    inventoryService.ServiceImplementingType = InventoryService_1.InventoryService;
+                    if (Toggles_1.Toggles.IsRipple())
+                        inventoryService.ServiceImplementingType = DummyInventoryService_1.DummyInventoryService;
+                    else
+                        inventoryService.ServiceImplementingType = InventoryService_1.InventoryService;
                     dependencies.push(inventoryService);
                     return dependencies;
                 };

@@ -1,4 +1,18 @@
 {
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "ambientDependencies": {
+    "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#6697d6f7dadbf5773cb40ecda35a76027e0783b2",
+    "systemjs": "github:DefinitelyTyped/DefinitelyTyped/systemjs/systemjs.d.ts#83af898254689400de8fb6495c34119ae57ec3fe"
+  },
+  "exclude": [
+    "bin",
+    "bld",
+    "merges",
+    "node_modules",
+    "platforms",
+    "plugins",
+    "res",
+    "www"
+  ]
 }

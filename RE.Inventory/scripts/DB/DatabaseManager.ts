@@ -1,4 +1,5 @@
 ﻿import {DatabaseHandle} from "./DatabaseHandle"
+import {Toggles} from "../Interfaces/Toggles" 
 
 
 export class DatabaseManager {
@@ -8,7 +9,12 @@ export class DatabaseManager {
     }
 
     private assertAccessableDatabase(databasename: string, succeedCallback: any) {
-        
+
+        if (Toggles.IsRipple()) {
+            succeedCallback();
+            return;
+        }
+
         function initDb() {
             new DatabaseHandle(databasename).OpenDatabase().transaction(tx => {
                 tx.executeSql("SELECT * FROM sqlite_master WHERE type='table'", [],

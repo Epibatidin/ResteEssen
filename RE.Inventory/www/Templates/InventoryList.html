@@ -10,13 +10,10 @@
 
             <input type="text" value="I Search Something "/>
 
-
         </div>
         <div class="clearfix"></div>
     </div>
 
-    <span *ngFor="#stockItem of componentStock">{{stockItem.Name}}</span>
-
-    <stockItem *ngFor="#stockItem of componentStock"></stockItem>
+    <stockItem *ngFor="#item of componentStock" [stronglyTyped]="item" ></stockItem>
    
 </div>

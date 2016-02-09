@@ -11,7 +11,6 @@ interface Window {
 
     sqlitePlugin: sqlitePlugin;
     plugins: IPlugins;
-
 }
 
 

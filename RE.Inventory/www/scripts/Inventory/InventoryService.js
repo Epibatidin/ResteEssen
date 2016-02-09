@@ -32,15 +32,16 @@ System.register(["./StockItem", "../DB/DatabaseHandle", "rxjs/Observable", 'rxjs
                     this._dbHandler = new DatabaseHandle_1.DatabaseHandle("Inventory.db");
                 }
                 InventoryService.prototype.loadStockItems = function () {
+                    var _this = this;
                     var self = this;
                     var dbQuery = Observable_1.Observable.create(function (observer) {
-                        self._dbHandler.OpenDatabase().transaction(function (tr) {
-                            tr.executeSql(self.selectAllQuery(), [], function (tx, res) {
+                        _this._dbHandler.OpenDatabase().transaction(function (tr) {
+                            tr.executeSql(_this.selectAllQuery(), [], function (tx, res) {
                                 for (var i = 0; i < res.rows.length; i++) {
                                     var row = res.rows.item(i);
                                     observer.next(row);
                                 }
-                            }, function errorHandler(err) {
+                            }, function (err) {
                                 console.log("error in db call " + JSON.stringify(err));
                                 observer.onError(err);
                             });
@@ -59,10 +60,7 @@ System.register(["./StockItem", "../DB/DatabaseHandle", "rxjs/Observable", 'rxjs
                 };
                 InventoryService.prototype.selectAllQuery = function () {
                     var query;
-                    query = "SELECT Inv.Inventory_PK, Inv.Quantity, Article.SingularName, Article.PluralName, ArticleType.Color " +
-                        "FROM Inventory_TB Inv " +
-                        "JOIN Article_TB Article on Article.Article_PK = inv.Article_FK " +
-                        "JOIN Article_Type_TB ArticleType on Article.ArticleType_FK = ArticleType.ArticleTypeId_PK;";
+                    query = "\n            SELECT Inv.Inventory_PK, Inv.Quantity, Article.SingularName, Article.PluralName, ArticleType.Color \n            FROM Inventory_TB Inv\n            JOIN Article_TB Article on Article.Article_PK = inv.Article_FK\n            JOIN Article_Type_TB ArticleType on Article.ArticleType_FK = ArticleType.ArticleTypeId_PK;\n        ";
                     return query;
                 };
                 return InventoryService;

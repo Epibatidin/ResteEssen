@@ -1,6 +1,8 @@
-﻿import {IInventoryService,InventoryService} from './InventoryService';
+﻿import {IInventoryService, InventoryService} from './InventoryService';
+import {DummyInventoryService} from './DummyInventoryService';
 import {InventoryManagerComponent} from './Component/InventoryManager.component'
 import {StockItem} from './StockItem';
+import {Toggles} from "../Interfaces/Toggles"
 
 export class DependencyConfiguration {
     ServiceInterface: any;
@@ -19,7 +21,13 @@ export class InventoryComponentLoader {
 
         var inventoryService = new DependencyConfiguration();
         inventoryService.ServiceInterface = IInventoryService;
-        inventoryService.ServiceImplementingType = InventoryService;
+
+        if (Toggles.IsRipple())
+            inventoryService.ServiceImplementingType = DummyInventoryService;
+        else 
+            inventoryService.ServiceImplementingType = InventoryService;
+        
+
         dependencies.push(inventoryService);
 
         return dependencies;

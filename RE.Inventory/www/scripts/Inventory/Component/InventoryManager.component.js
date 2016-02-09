@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../InventoryService", "../StockItem"], function(exports_1) {
+System.register(['angular2/core', "../InventoryService", "./StockItem.component"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11,7 +11,7 @@ System.register(["angular2/core", "../InventoryService", "../StockItem"], functi
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, InventoryService_1, StockItem_1;
+    var core_1, InventoryService_1, StockItem_component_1;
     var InventoryManagerComponent;
     return {
         setters:[
@@ -21,8 +21,8 @@ System.register(["angular2/core", "../InventoryService", "../StockItem"], functi
             function (InventoryService_1_1) {
                 InventoryService_1 = InventoryService_1_1;
             },
-            function (StockItem_1_1) {
-                StockItem_1 = StockItem_1_1;
+            function (StockItem_component_1_1) {
+                StockItem_component_1 = StockItem_component_1_1;
             }],
         execute: function() {
             InventoryManagerComponent = (function () {
@@ -46,19 +46,17 @@ System.register(["angular2/core", "../InventoryService", "../StockItem"], functi
                     }
                 };
                 InventoryManagerComponent.prototype.ngOnInit = function () {
-                    console.log('InventoryComponent OnInit');
                     var self = this;
-                    self.componentStock.push(new StockItem_1.StockItem());
                     this._inventory.loadStockItems().subscribe(function (r) {
                         self.componentStock.push(r);
                     });
-                    self.componentStock.splice(0, 1);
                 };
                 ;
                 InventoryManagerComponent = __decorate([
                     core_1.Component({
                         selector: 'inventory-app',
                         templateUrl: 'Templates/InventoryList.html',
+                        directives: [StockItem_component_1.StockItemComponent],
                     }),
                     __param(0, core_1.Inject(InventoryService_1.IInventoryService)), 
                     __metadata('design:paramtypes', [InventoryService_1.IInventoryService])

@@ -1,14 +1,14 @@
 ﻿import {StockItem} from "./StockItem";
 import {DatabaseHandle} from "../DB/DatabaseHandle";
-import {Observable} from "rxjs/Observable";
+import {Observable}from "rxjs/Observable";
 import 'rxjs/add/operator/map'; // add map function to observable
 
-export declare abstract class IInventoryService {
+
+
+export abstract class IInventoryService {
 
     abstract loadStockItems(): Observable<StockItem>;
 }
-
-
 
 // https://coryrylan.com/blog/angular-2-observable-data-services
 export class InventoryService extends IInventoryService {
@@ -58,11 +58,12 @@ export class InventoryService extends IInventoryService {
     private selectAllQuery() :string {
         var query;
 
-        query = "SELECT Inv.Inventory_PK, Inv.Quantity, Article.SingularName, Article.PluralName, ArticleType.Color " +
-            "FROM Inventory_TB Inv " +
-            "JOIN Article_TB Article on Article.Article_PK = inv.Article_FK " +
-            "JOIN Article_Type_TB ArticleType on Article.ArticleType_FK = ArticleType.ArticleTypeId_PK;";
-
+        query = `
+            SELECT Inv.Inventory_PK, Inv.Quantity, Article.SingularName, Article.PluralName, ArticleType.Color 
+            FROM Inventory_TB Inv
+            JOIN Article_TB Article on Article.Article_PK = inv.Article_FK
+            JOIN Article_Type_TB ArticleType on Article.ArticleType_FK = ArticleType.ArticleTypeId_PK;
+        `;
         return query;
     }
 };

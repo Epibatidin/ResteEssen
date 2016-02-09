@@ -12,6 +12,8 @@
     "outDir": "www/scripts/"    
   },
   "exclude": [
+    "typings/browser.d.ts",
+    "typings/browser",
     "bin",
     "bld",
     "merges",
